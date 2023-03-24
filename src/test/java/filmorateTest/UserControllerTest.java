@@ -6,9 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @SpringBootTest
 public class UserControllerTest {
-   private static final User users = new User();
+    private static final User users = new User();
     private static final User updateUsers = new User();
 
     @Test
@@ -17,6 +19,8 @@ public class UserControllerTest {
         users.setName("Name");
         users.setLogin("Login");
         users.setBirthday(LocalDate.of(2023, 3, 17));
+
+        assertNotNull(users, "Список пользователей пустой.");
     }
 
     @Test
@@ -30,6 +34,8 @@ public class UserControllerTest {
         updateUsers.setName("Name-2");
         updateUsers.setLogin("Login-2");
         updateUsers.setBirthday(LocalDate.of(2025, 5, 19));
+
+        assertNotNull(users, "Список пользователей пустой.");
     }
 
     @Test
@@ -43,5 +49,7 @@ public class UserControllerTest {
         users.setName("Name-2");
         users.setLogin("Login-2");
         users.setBirthday(LocalDate.of(2024, 4, 18));
+
+        assertNotNull(users, "Список пользователей пустой.");
     }
 }
