@@ -42,6 +42,7 @@ public class UserController {
         return users.values();
     }
 
+
     private boolean validation(User user) { // Обработка ошибок
         if (user.getEmail() == null || !user.getEmail().contains("@") || user.getEmail().isBlank()) {
             throw new ValidationException("Адрес электронной почты не может быть пустым или не содержит символ: @");
