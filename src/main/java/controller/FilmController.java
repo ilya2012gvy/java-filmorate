@@ -23,7 +23,6 @@ public class FilmController {
             films.add(film);
             log.info("Фильм добавлен: {}", film);
         }
-        
         return film;
     }
 
