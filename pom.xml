@@ -40,7 +40,6 @@
         <version>1.18.20</version>
         <scope>provided</scope>
     </dependency>
-    
 </dependencies>
 
 <build>
