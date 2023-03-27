@@ -16,7 +16,6 @@ public class FilmController {
     private final List<Film> films = new ArrayList<>();
     private int id = 1;
 
-
     @PostMapping
     public Film addFilm(@RequestBody Film film) { // добавление фильма
         if (validation(film)) {

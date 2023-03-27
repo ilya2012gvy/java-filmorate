@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
 @SpringBootTest
 public class UserControllerTest {
     private static final User users = new User();

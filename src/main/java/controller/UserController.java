@@ -17,7 +17,6 @@ public class UserController {
     private final Map<String, User> users = new HashMap<>();
     private int id = 1;
 
-
     @PostMapping
     public User addUser(@RequestBody User user) { // создание пользователя
         if (validation(user)) {
