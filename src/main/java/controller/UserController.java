@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import model.User;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public class UserController {
 
 
     @PostMapping
-    public User addUser(@RequestBody User user) { // создание пользователя
+    public User addUser(@Valid @RequestBody User user) { // создание пользователя
         if (validation(user)) {
             user.setId(id++);
             users.put(user.getEmail(), user);
@@ -29,7 +30,7 @@ public class UserController {
     }
 
     @PutMapping
-    public User updateUser(@RequestBody User user) { // обновление пользователя
+    public User updateUser(@Valid @RequestBody User user) { // обновление пользователя
         if (validation(user)) {
             users.put(user.getEmail(), user);
             log.info("Пользователь обновлён: {}", user);

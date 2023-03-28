@@ -5,6 +5,7 @@ import model.Film;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class FilmController {
 
 
     @PostMapping
-    public Film addFilm(@RequestBody Film film) { // добавление фильма
+    public Film addFilm(@Valid @RequestBody Film film) { // добавление фильма
         if (validation(film)) {
             film.setId(id++);
             films.add(film);
@@ -28,7 +29,7 @@ public class FilmController {
     }
 
     @PutMapping
-    public Film updateFilm(@RequestBody Film film) { // обновление фильма
+    public Film updateFilm(@Valid @RequestBody Film film) { // обновление фильма
         if (validation(film)) {
             films.add(film);
             log.info("Фильм обновлён: {}", film);
