@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 public class Film {
@@ -17,4 +18,5 @@ public class Film {
     private LocalDate releaseDate; // дата релиза
     @Positive(message = "Фильм не может содержать отрицательное количество символов!")
     private int duration; // продолжительность фильма
+    private Set<Long> likes; // лайки
 }
