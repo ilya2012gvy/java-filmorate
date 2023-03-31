@@ -41,17 +41,17 @@ public class FilmController {
     }
 
     @PutMapping("/films/{id}/like/{userId}")
-    public Film likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
-       return filmService.likesTheMovie(ids, filmIds);
+    public Film likesTheMovie(@PathVariable int id, @PathVariable Long userId) { // пользователь ставит лайк фильму
+       return filmService.likesTheMovie(id, userId);
     }
 
     @DeleteMapping("/films/{id}/like/{userId}")
-    public Film likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
-       return filmService.likesTheDelete(ids, filmIds);
+    public Film likesTheDelete(@PathVariable int id, @PathVariable int userId) { // пользователь удаляет лайк
+       return filmService.likesTheDelete(id, userId);
     }
 
     @GetMapping("/films/popular?count={count}")
-    public List<Film> returnListAll(int count) { // возвращает список из первых фильмов по количеству лайков
+    public List<Film> returnListAll(@PathVariable int count) { // возвращает список из первых фильмов по количеству лайков
        return filmService.returnListAll(count);
     }
 }
