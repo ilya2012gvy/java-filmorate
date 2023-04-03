@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
-
+import java.util.Set;
 
 @Data
 public class User {
@@ -19,4 +19,5 @@ public class User {
     private String name; // название
     @Past(message = "День рождения не может быть из будущего!")
     private LocalDate birthday; // дата рождения
+    private Set<Long> friends;
 }

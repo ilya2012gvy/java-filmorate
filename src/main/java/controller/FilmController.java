@@ -1,61 +1,57 @@
 package controller;
 
-import exception.ValidationException;
 import model.Film;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
+import service.FilmService;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("/films")
 public class FilmController {
-    private final List<Film> films = new ArrayList<>();
-    private int id = 1;
+    private final FilmService filmService;
 
+    @Autowired
+    public FilmController(FilmService filmService) {
+        this.filmService = filmService;
+    }
 
     @PostMapping
     public Film addFilm(@Valid @RequestBody Film film) { // добавление фильма
-        if (validation(film)) {
-            film.setId(id++);
-            films.add(film);
-            log.info("Фильм добавлен: {}", film);
-        }
-        return film;
+        return filmService.addFilm(film);
     }
 
     @PutMapping
     public Film updateFilm(@Valid @RequestBody Film film) { // обновление фильма
-        if (validation(film)) {
-            films.add(film);
-            log.info("Фильм обновлён: {}", film);
-        }
-        return film;
+        return filmService.updateFilm(film);
+    }
+
+    @DeleteMapping
+    public Film deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
+        return filmService.deleteFilm(film);
     }
 
     @GetMapping
     public List<Film> allFilm() { // получение всех фильмов
-        log.info("Количество фильмов: {}", films.size());
-        return films;
+        return filmService.allFilm();
     }
 
-    private boolean validation(Film film) { // Обработка ошибок
-        if (film.getName() == null || film.getName().isBlank()) {
-            throw new ValidationException("Фильм не может быть пустым!");
-        }
-        if (film.getDescription().length() > 200) {
-            throw new ValidationException("Фильм не может содержать больше 200 символов!");
-        }
-        if (film.getReleaseDate().isBefore(LocalDate.of(1895, 12, 28))) {
-            throw new ValidationException("Фильм не может быть раньше 1895 года!");
-        }
-        if (film.getDuration() < 0) {
-            throw new ValidationException("Фильм не может содержать отрицательное количество символов!");
-        }
-        return false;
+    @PutMapping("/films/{id}/like/{userId}")
+    public Film likesTheMovie(@PathVariable int id, @PathVariable Long userId) { // пользователь ставит лайк фильму
+       return filmService.likesTheMovie(id, userId);
+    }
+
+    @DeleteMapping("/films/{id}/like/{userId}")
+    public Film likesTheDelete(@PathVariable int id, @PathVariable int userId) { // пользователь удаляет лайк
+       return filmService.likesTheDelete(id, userId);
+    }
+
+    @GetMapping("/films/popular?count={count}")
+    public List<Film> returnListAll(@PathVariable int count) { // возвращает список из первых фильмов по количеству лайков
+       return filmService.returnListAll(count);
     }
 }
