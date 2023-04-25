@@ -28,7 +28,7 @@ public class FilmService {
         return filmStorage.updateFilm(film);
     }
 
-    public Film deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
+    public int deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
         return filmStorage.deleteFilm(film);
     }
 
@@ -36,11 +36,11 @@ public class FilmService {
         return filmStorage.allFilm();
     }
 
-    public Film likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
+    public int likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
         return filmStorage.likesTheMovie(ids, filmIds);
     }
 
-    public Film likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
+    public int likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
         return filmStorage.likesTheDelete(ids, filmIds);
     }
 

@@ -29,7 +29,7 @@ public class UserService {
         return userStorage.updateUser(user);
     }
 
-    public User deleteUser(@Valid @RequestBody User user) { // удаление пользователя
+    public int deleteUser(@Valid @RequestBody User user) { // удаление пользователя
         return userStorage.deleteUser(user);
     }
 
@@ -37,11 +37,11 @@ public class UserService {
         return userStorage.allUser();
     }
 
-    public User addFriend(Long ids, Long userIds) { // добавление в друзья
+    public int addFriend(Long ids, Long userIds) { // добавление в друзья
        return userStorage.addFriend(ids, userIds);
     }
 
-    public User deleteFriend(Long ids, Long userIds) { // удаление из друзей
+    public int deleteFriend(Long ids, Long userIds) { // удаление из друзей
        return userStorage.deleteFriend(ids, userIds);
     }
 

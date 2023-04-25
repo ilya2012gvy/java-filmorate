@@ -1,10 +1,11 @@
-package storage;
+package storage.report;
 
 import exception.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
+import storage.UserStorage;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -41,14 +42,14 @@ public class InMemoryUserStorage implements UserStorage {
     }
 
     @Override
-    public User deleteUser(@Valid @RequestBody User user) { // удаление пользователя
+    public int deleteUser(@Valid @RequestBody User user) { // удаление пользователя
         if (validation(user)) {
             if (users.containsKey(user.getId())) {
                 users.remove(user.getId());
                 log.info("Пользователь удалён: {}", user);
             }
         }
-        return user;
+        return 0;
     }
 
     @Override
@@ -58,7 +59,7 @@ public class InMemoryUserStorage implements UserStorage {
     }
 
     @Override
-    public User addFriend(Long ids, Long userIds) { // добавление в друзья
+    public int addFriend(Long ids, Long userIds) { // добавление в друзья
             User user = getUser(ids);
             User newUser = getUser(userIds);
 
@@ -71,18 +72,18 @@ public class InMemoryUserStorage implements UserStorage {
             friends.add(ids);
             newUser.setFriends(friends);
         }
-        return updateUser(user);
+        return 0;
     }
 
     @Override
-    public User deleteFriend(Long ids, Long userIds) { // удаление из друзей
+    public int deleteFriend(Long ids, Long userIds) { // удаление из друзей
         User user = getUser(ids);
         User newUser = getUser(userIds);
 
         if (user != null && newUser != null) {
-            user = deleteUser(newUser);
+           deleteUser(newUser);
         }
-        return updateUser(user);
+        return 0;
     }
 
     @Override

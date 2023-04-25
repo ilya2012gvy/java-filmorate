@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @DeleteMapping
-    public User deleteUser(@Valid @RequestBody User user) { // удаление пользователя
+    public int deleteUser(@Valid @RequestBody User user) { // удаление пользователя
         return userService.deleteUser(user);
     }
 
@@ -42,12 +42,12 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}/friends/{friendId}")
-    public User addFriend(@PathVariable Long id, @PathVariable Long friendId) { // добавление в друзья
+    public int addFriend(@PathVariable Long id, @PathVariable Long friendId) { // добавление в друзья
        return userService.addFriend(id, friendId);
     }
 
     @DeleteMapping("/users/{id}/friends/{friendId}")
-    public User deleteFriend(@PathVariable Long id, @PathVariable Long friendId) { // удаление из друзей
+    public int deleteFriend(@PathVariable Long id, @PathVariable Long friendId) { // удаление из друзей
        return userService.deleteFriend(id, friendId);
     }
 
