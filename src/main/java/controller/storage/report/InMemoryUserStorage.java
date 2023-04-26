@@ -1,11 +1,11 @@
-package storage.report;
+package controller.storage.report;
 
 import exception.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
-import storage.UserStorage;
+import controller.storage.UserStorage;
 
 import javax.validation.Valid;
 import java.time.LocalDate;

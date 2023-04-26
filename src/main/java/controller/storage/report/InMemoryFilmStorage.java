@@ -1,12 +1,12 @@
-package storage.report;
+package controller.storage.report;
 
+import controller.storage.FilmStorage;
+import controller.storage.UserStorage;
 import exception.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import model.Film;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
-import storage.FilmStorage;
-import storage.UserStorage;
 
 import javax.validation.Valid;
 import java.time.LocalDate;

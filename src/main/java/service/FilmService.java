@@ -5,7 +5,7 @@ import model.Film;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import storage.FilmStorage;
+import controller.storage.FilmStorage;
 
 import javax.validation.Valid;
 import java.util.List;

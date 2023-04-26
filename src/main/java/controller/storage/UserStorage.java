@@ -1,4 +1,4 @@
-package storage;
+package controller.storage;
 
 import model.User;
 import org.springframework.web.bind.annotation.RequestBody;

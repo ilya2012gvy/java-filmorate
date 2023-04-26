@@ -1,10 +1,10 @@
-package storage.dao;
+package controller.storage.dao;
 
+import controller.storage.UserStorage;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import storage.UserStorage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

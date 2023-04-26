@@ -5,7 +5,6 @@ import model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.GenreService;
 
@@ -13,7 +12,6 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/genre")
 public class GenreController {
     private final GenreService genreService;
 
@@ -22,12 +20,12 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping
+    @GetMapping("/genre")
     public List<Genre> allGenre() {
         return genreService.allGenre();
     }
 
-    @PutMapping
+    @PutMapping("/genre/{id}")
     public Genre addGenre() {
         return genreService.addGenre();
     }

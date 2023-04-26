@@ -1,8 +1,10 @@
-package storage.dao;
+package controller.storage.dao;
 
+import controller.storage.FilmStorage;
+import lombok.extern.slf4j.Slf4j;
 import model.Film;
 import org.springframework.jdbc.core.JdbcTemplate;
-import storage.FilmStorage;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +12,8 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
+@Component
+@Slf4j
 public class FilmDbStorage implements FilmStorage {
     private final JdbcTemplate jdbcTemplate;
 

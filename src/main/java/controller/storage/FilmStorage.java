@@ -1,4 +1,4 @@
-package storage;
+package controller.storage;
 
 import model.Film;
 import org.springframework.web.bind.annotation.RequestBody;

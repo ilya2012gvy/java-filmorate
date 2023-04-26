@@ -1,14 +1,18 @@
-package storage.dao;
+package controller.storage.dao;
 
+import controller.storage.GenreStorage;
+import lombok.extern.slf4j.Slf4j;
 import model.Genre;
 import org.springframework.jdbc.core.JdbcTemplate;
-import storage.GenreStorage;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
+@Component
+@Slf4j
 public class GenreDbStorage implements GenreStorage {
     private final JdbcTemplate jdbcTemplate;
 

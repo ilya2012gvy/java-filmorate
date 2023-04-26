@@ -3,7 +3,7 @@ package service;
 import lombok.extern.slf4j.Slf4j;
 import model.Rating;
 import org.springframework.stereotype.Service;
-import storage.RatingStorage;
+import controller.storage.RatingStorage;
 
 import java.util.List;
 

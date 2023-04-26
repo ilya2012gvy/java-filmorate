@@ -5,7 +5,7 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import storage.UserStorage;
+import controller.storage.UserStorage;
 
 import javax.validation.Valid;
 import java.util.Collection;
