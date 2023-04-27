@@ -33,7 +33,7 @@ CREATE TABLE if NOT EXISTS genre (
 );
 
 CREATE TABLE if NOT EXISTS friends (
-    film_id INTEGER REFERENCES films (film_id) ON UPDATE CASCADE,
+    friend_id INTEGER REFERENCES films (film_id) ON UPDATE CASCADE,
     user_id INTEGER REFERENCES users (user_id) ON UPDATE CASCADE,
     status varchar(100)
 );
