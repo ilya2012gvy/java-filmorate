@@ -5,7 +5,7 @@ import model.Film;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import storage.FilmStorage;
+import controller.storage.FilmStorage;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -28,7 +28,7 @@ public class FilmService {
         return filmStorage.updateFilm(film);
     }
 
-    public Film deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
+    public int deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
         return filmStorage.deleteFilm(film);
     }
 
@@ -36,11 +36,11 @@ public class FilmService {
         return filmStorage.allFilm();
     }
 
-    public Film likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
+    public int likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
         return filmStorage.likesTheMovie(ids, filmIds);
     }
 
-    public Film likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
+    public int likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
         return filmStorage.likesTheDelete(ids, filmIds);
     }
 

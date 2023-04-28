@@ -31,7 +31,7 @@ public class FilmController {
     }
 
     @DeleteMapping
-    public Film deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
+    public int deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
         return filmService.deleteFilm(film);
     }
 
@@ -41,12 +41,12 @@ public class FilmController {
     }
 
     @PutMapping("/films/{id}/like/{userId}")
-    public Film likesTheMovie(@PathVariable int id, @PathVariable Long userId) { // пользователь ставит лайк фильму
+    public int likesTheMovie(@PathVariable int id, @PathVariable Long userId) { // пользователь ставит лайк фильму
        return filmService.likesTheMovie(id, userId);
     }
 
     @DeleteMapping("/films/{id}/like/{userId}")
-    public Film likesTheDelete(@PathVariable int id, @PathVariable int userId) { // пользователь удаляет лайк
+    public int likesTheDelete(@PathVariable int id, @PathVariable int userId) { // пользователь удаляет лайк
        return filmService.likesTheDelete(id, userId);
     }
 

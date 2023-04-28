@@ -1,4 +1,4 @@
-package storage;
+package controller.storage;
 
 import model.Film;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,13 +11,13 @@ public interface FilmStorage {
 
     Film updateFilm(@Valid @RequestBody Film film); // обновление фильма
 
-    Film deleteFilm(@Valid @RequestBody Film film); // удаление фильма
+    int deleteFilm(@Valid @RequestBody Film film); // удаление фильма
 
     List<Film> allFilm(); // получение всех фильмов
 
-    Film likesTheMovie(int ids, Long filmIds); // пользователь ставит лайк фильму
+    int likesTheMovie(int ids, Long filmIds); // пользователь ставит лайк фильму
 
-    Film likesTheDelete(int ids, int filmIds); // пользователь удаляет лайк
+    int likesTheDelete(int ids, int filmIds); // пользователь удаляет лайк
 
     List<Film> returnListAll(int count); // возвращает список из первых фильмов по количеству лайков
 }

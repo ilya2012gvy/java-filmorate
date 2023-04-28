@@ -1,5 +1,7 @@
-package storage;
+package controller.storage.report;
 
+import controller.storage.FilmStorage;
+import controller.storage.UserStorage;
 import exception.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import model.Film;
@@ -43,12 +45,12 @@ public class InMemoryFilmStorage implements FilmStorage {
     }
 
     @Override
-    public Film deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
+    public int deleteFilm(@Valid @RequestBody Film film) { // удаление фильма
         if (validation(film)) {
             films.remove(film);
             log.info("Фильм удалён: {}", film);
         }
-        return film;
+        return 0;
     }
 
     @Override
@@ -58,21 +60,21 @@ public class InMemoryFilmStorage implements FilmStorage {
     }
 
     @Override
-    public Film likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
+    public int likesTheMovie(int ids, Long filmIds) { // пользователь ставит лайк фильму
         if (films.contains(ids) && userStorage.allUser().contains(filmIds)) {
             films.get(ids).getLikes().add(filmIds);
             log.info("Пользователь поставил лайк: {}", films);
         }
-        return null;
+        return ids;
     }
 
     @Override
-    public Film likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
+    public int likesTheDelete(int ids, int filmIds) { // пользователь удаляет лайк
         if (films.contains(ids) && userStorage.allUser().contains(filmIds)) {
             films.get(ids).getLikes().remove(filmIds);
             log.info("Пользователь удалил лайк: {}", films);
         }
-        return null;
+        return ids;
     }
 
     @Override
